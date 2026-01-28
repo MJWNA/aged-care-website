@@ -1,0 +1,156 @@
+---
+import '../../generated/fonts.css';
+import '../site-components/global.css';
+import '../styles/global.css';
+
+const { 
+  pageClass = '',
+  title = 'Aged Care Information | Free Provider Matching Service Australia',
+  description = 'Find your perfect aged care provider - 100% free, independent advice. We help Australian families navigate the 2025 Support at Home program. Same day responses. 2,847+ families helped.'
+} = Astro.props;
+---
+
+<html lang="en" class={pageClass}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="keywords" content="aged care, aged care providers, home care packages, support at home, aged care Australia, my aged care, aged care reform 2025, aged care providers Sydney, aged care providers Melbourne, aged care costs, switching aged care providers" />
+		<meta name="author" content="Aged Care Information" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://agedcareinformation.com.au/" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="https://agedcareinformation.com.au/og-image.jpg" />
+		<meta property="og:locale" content="en_AU" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://agedcareinformation.com.au/" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content="https://agedcareinformation.com.au/og-image.jpg" />
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href="https://agedcareinformation.com.au/" />
+		
+		<!-- Schema.org Structured Data -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Aged Care Information",
+			"image": "https://agedcareinformation.com.au/logo.jpg",
+			"@id": "https://agedcareinformation.com.au",
+			"url": "https://agedcareinformation.com.au",
+			"telephone": "+611800303101",
+			"priceRange": "Free",
+			"address": {
+				"@type": "PostalAddress",
+				"addressCountry": "AU",
+				"addressRegion": "Australia"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": -25.2744,
+				"longitude": 133.7751
+			},
+			"sameAs": [
+				"https://www.facebook.com/agedcareinformation",
+				"https://www.linkedin.com/company/agedcareinformation"
+			],
+			"openingHoursSpecification": {
+				"@type": "OpeningHoursSpecification",
+				"dayOfWeek": [
+					"Monday",
+					"Tuesday",
+					"Wednesday",
+					"Thursday",
+					"Friday"
+				],
+				"opens": "09:00",
+				"closes": "17:00"
+			},
+			"aggregateRating": {
+				"@type": "AggregateRating",
+				"ratingValue": "4.9",
+				"reviewCount": "2847"
+			},
+			"description": "Free, independent aged care provider matching service for Australian families. We help you find the perfect Support at Home provider with same day responses."
+		}
+		</script>
+		
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Service",
+			"serviceType": "Aged Care Provider Matching",
+			"provider": {
+				"@type": "Organization",
+				"name": "Aged Care Information"
+			},
+			"areaServed": {
+				"@type": "Country",
+				"name": "Australia"
+			},
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Aged Care Services",
+				"itemListElement": [
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Free Provider Matching",
+							"description": "Connect with 3 perfect aged care providers"
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Provider Comparison",
+							"description": "Compare providers based on your needs"
+						}
+					},
+					{
+						"@type": "Offer",
+						"itemOffered": {
+							"@type": "Service",
+							"name": "Switching Support",
+							"description": "Help switching from existing provider"
+						}
+					}
+				]
+			}
+		}
+		</script>
+	</head>
+	<!-- Dark mode class injection point - will be replaced with `dark` class based on your site palette -->
+	<body class="__DARK_MODE_CLASS__">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* Page-specific overrides */
+  html.splash main { 
+    display: flex !important; 
+  }
+  
+  html.splash ol,
+  html.splash ul { 
+    padding-left: 0 !important; 
+    margin: 0 !important; 
+  }
+</style>
+

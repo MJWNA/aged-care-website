@@ -1,0 +1,144 @@
+---
+import MainLayout from '../layouts/main.astro';
+import QRCode from '../components/QRCode';
+import Navigation from '../components/Navigation';
+import FooterSection from '../components/FooterSection';
+
+const pageClass = 'aged-care';
+---
+
+<MainLayout 
+  pageClass={pageClass}
+  title="QR Code - Aged Care Information"
+  description="Download our QR code to share Aged Care Information website"
+>
+  <Navigation client:load />
+  
+  <main className="py-20 px-4" style="min-height: 80vh;">
+    <div className="max-w-4xl mx-auto">
+      <!-- Header -->
+      <div className="text-center mb-12">
+        <h1 
+          className="text-4xl md:text-5xl font-bold mb-4"
+          style="color: #0f1f2e;"
+        >
+          📱 Website QR Code
+        </h1>
+        <p 
+          className="text-xl max-w-2xl mx-auto"
+          style="color: #64748b;"
+        >
+          Share our free aged care provider matching service with anyone who needs help finding quality care.
+        </p>
+      </div>
+
+      <!-- QR Code Component -->
+      <QRCode client:only="react" size={300} showDownload={true} />
+
+      <!-- Additional Info -->
+      <div 
+        className="mt-12 p-8 rounded-2xl"
+        style="background: linear-gradient(135deg, #4a7c9e 0%, #0f4c75 100%);"
+      >
+        <div className="max-w-2xl mx-auto text-center text-white">
+          <h2 className="text-2xl font-bold mb-4">
+            🎯 Share Quality Aged Care Information
+          </h2>
+          <p className="text-lg mb-6 opacity-90">
+            Help families and seniors find the perfect aged care provider - 100% free service with same-day responses.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="text-center">
+              <div 
+                className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center"
+                style="background: #f4b400;"
+              >
+                <span className="text-3xl">✓</span>
+              </div>
+              <h3 className="font-bold mb-1">100% Free</h3>
+              <p className="text-sm opacity-80">No fees or commissions</p>
+            </div>
+            
+            <div className="text-center">
+              <div 
+                className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center"
+                style="background: #f4b400;"
+              >
+                <span className="text-3xl">🏆</span>
+              </div>
+              <h3 className="font-bold mb-1">2,847+ Families Helped</h3>
+              <p className="text-sm opacity-80">Trusted service since 2023</p>
+            </div>
+            
+            <div className="text-center">
+              <div 
+                className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center"
+                style="background: #f4b400;"
+              >
+                <span className="text-3xl">⚡</span>
+              </div>
+              <h3 className="font-bold mb-1">Same Day Response</h3>
+              <p className="text-sm opacity-80">Quick, personalized matches</p>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-white/20">
+            <p className="text-sm opacity-80">
+              Questions? Call us: <a href="tel:1800303101" className="font-bold underline">1800 303 101</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Different Size Options -->
+      <div className="mt-16">
+        <h2 
+          className="text-3xl font-bold text-center mb-8"
+          style="color: #0f1f2e;"
+        >
+          📐 Different Sizes Available
+        </h2>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="text-center">
+            <h3 className="font-bold mb-4" style="color: #4a7c9e;">Small (150x150)</h3>
+            <QRCode client:only="react" size={150} showDownload={false} />
+            <p className="text-sm mt-3" style="color: #64748b;">Perfect for business cards</p>
+          </div>
+          
+          <div className="text-center">
+            <h3 className="font-bold mb-4" style="color: #4a7c9e;">Medium (300x300)</h3>
+            <QRCode client:only="react" size={300} showDownload={false} />
+            <p className="text-sm mt-3" style="color: #64748b;">Great for flyers & posters</p>
+          </div>
+          
+          <div className="text-center">
+            <h3 className="font-bold mb-4" style="color: #4a7c9e;">Large (500x500)</h3>
+            <QRCode client:only="react" size={500} showDownload={false} />
+            <p className="text-sm mt-3" style="color: #64748b;">Ideal for large displays</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Back to Home Button -->
+      <div className="text-center mt-12">
+        <a
+          href="/"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-bold text-lg transition-all hover:brightness-95"
+          style="background: #f4b400; color: #0f1f2e;"
+        >
+          ← Back to Home
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <FooterSection client:only="react" />
+</MainLayout>
+
+<style>
+  main {
+    background: linear-gradient(180deg, #f7f9fb 0%, #ffffff 100%);
+  }
+</style>

@@ -1,0 +1,112 @@
+
+
+
+
+
+---
+import MainLayout from '../layouts/main.astro';
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import WhyTrustUs from '../components/WhyTrustUs';
+import Testimonials from '../components/Testimonials';
+import FAQ from '../components/FAQ';
+import Navigation from '../components/Navigation';
+import SocialProof from '../components/SocialProof';
+import ResourcesSection from '../components/ResourcesSection';
+import ComparisonTool from '../components/ComparisonTool';
+import FooterSection from '../components/FooterSection';
+import MobileCTA from '../components/MobileCTA';
+import ReformNotice from '../components/ReformNotice';
+import Credentials from '../components/Credentials';
+import CTABanner from '../components/CTABanner';
+import AuthorityStatement from '../components/AuthorityStatement';
+import LeadForm from '../components/LeadForm';
+import LeadFormPopup from '../components/LeadFormPopup';
+
+const pageClass = 'aged-care';
+---
+
+<MainLayout pageClass={pageClass}>
+<Navigation client:load />
+<Hero client:only="react" />
+
+<SocialProof client:only="react" />
+<AuthorityStatement client:only="react" />
+<ReformNotice client:only="react" />
+<HowItWorks client:only="react" />
+<CTABanner client:only="react" />
+<WhyTrustUs client:only="react" />
+<Credentials client:only="react" />
+<Testimonials client:only="react" />
+<FAQ client:only="react" />
+
+<!-- Lead Form -->
+<LeadForm client:only="react" />
+
+<!-- Footer -->
+<FooterSection client:only="react" />
+
+<!-- Mobile Sticky CTA -->
+<MobileCTA client:only="react" />
+
+<!-- Lead Form Popup (appears every 2 minutes) -->
+<LeadFormPopup client:only="react" />
+</MainLayout>
+
+<style is:global>
+:root {
+--aged-primary: #4a7c9e;
+--aged-secondary: #2c3e50;
+--aged-accent: #f4b400;
+--aged-bg: #f7f9fb;
+--aged-text: #2d3748;
+--aged-muted: #718096;
+--aged-card: #ffffff;
+--aged-radius: 12px;
+--aged-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+html.aged-care {
+scroll-behavior: smooth;
+}
+
+html.aged-care body {
+background: var(--aged-bg);
+color: var(--aged-text);
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,103 @@
+---
+/**
+ * Live Chat Integration Component
+ * 
+ * Instructions:
+ * 1. Sign up for Tawk.to (FREE): https://www.tawk.to/
+ * 2. Get your Property ID from dashboard
+ * 3. Replace 'YOUR_PROPERTY_ID' below with your actual ID
+ * 4. Add this component to your main layout
+ * 
+ * Alternative options:
+ * - Tidio: https://www.tidio.com/ (free plan available)
+ * - Intercom: https://www.intercom.com/ ($74/month)
+ * - Drift: https://www.drift.com/ (expensive)
+ */
+
+const TAWK_PROPERTY_ID = 'YOUR_PROPERTY_ID'; // Replace with your Tawk.to property ID
+const TAWK_WIDGET_ID = 'default'; // Or your specific widget ID
+---
+
+<!-- Tawk.to Live Chat -->
+<script is:inline define:vars={{ TAWK_PROPERTY_ID, TAWK_WIDGET_ID }}>
+  // Only load if property ID is set
+  if (TAWK_PROPERTY_ID !== 'YOUR_PROPERTY_ID') {
+    var Tawk_API = Tawk_API || {};
+    var Tawk_LoadStart = new Date();
+    
+    (function(){
+      var s1 = document.createElement("script");
+      var s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = `https://embed.tawk.to/${TAWK_PROPERTY_ID}/${TAWK_WIDGET_ID}`;
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+
+    // Optional: Customize widget
+    Tawk_API.onLoad = function(){
+      // Set custom attributes
+      Tawk_API.setAttributes({
+        'name': 'Website Visitor',
+        'source': 'Aged Care Information Website'
+      }, function(error){});
+      
+      // Optional: Hide widget on mobile if you want
+      // if (window.innerWidth < 768) {
+      //   Tawk_API.hideWidget();
+      // }
+    };
+
+    // Track chat events in Google Analytics
+    Tawk_API.onChatStarted = function(){
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chat_started', {
+          'event_category': 'Live Chat',
+          'event_label': 'Chat Started'
+        });
+      }
+    };
+
+    Tawk_API.onChatEnded = function(){
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'chat_ended', {
+          'event_category': 'Live Chat',
+          'event_label': 'Chat Ended'
+        });
+      }
+    };
+  }
+</script>
+
+<!-- Alternative: Tidio Live Chat -->
+<!-- Uncomment below to use Tidio instead of Tawk.to -->
+<!--
+<script is:inline>
+  // Sign up at https://www.tidio.com/ and get your public key
+  // Replace 'YOUR_TIDIO_KEY' with your actual key
+  const TIDIO_KEY = 'YOUR_TIDIO_KEY';
+  
+  if (TIDIO_KEY !== 'YOUR_TIDIO_KEY') {
+    (function() {
+      var tidioScript = document.createElement('script');
+      tidioScript.src = `//code.tidio.co/${TIDIO_KEY}.js`;
+      tidioScript.async = true;
+      document.body.appendChild(tidioScript);
+    })();
+  }
+</script>
+-->
+
+<style>
+  /* Optional: Customize chat widget position */
+  :global(#tawk-bubble-container) {
+    bottom: 80px !important; /* Adjust to not overlap with mobile CTA */
+  }
+  
+  @media (max-width: 768px) {
+    :global(#tawk-bubble-container) {
+      bottom: 100px !important; /* More space on mobile */
+    }
+  }
+</style>
